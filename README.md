@@ -1,2 +1,2 @@
 # learn-vue-js
-> basic
+Vue.js 시작하기 완강
