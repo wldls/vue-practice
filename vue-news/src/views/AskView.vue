@@ -1,15 +1,31 @@
 <template>
 	<div>
-		<p v-for="ask in fetchedAsk" v-bind:key="ask.id">
-			<router-link v-bind:to="`/item/${ask.id}`">{{ ask.title }}</router-link>
-			<small>{{ ask.time_ago }} by {{ ask.user }}</small>
-		</p>
+		<ul class="news-list">
+			<li v-for="ask in fetchedAsk" v-bind:key="ask.id" class="post">
+				<div class="points">
+					{{ ask.points }}
+				</div>
+				<div>
+					<p class="news-title">
+						<router-link v-bind:to="`/item/${ask.id}`">
+							{{ ask.title }}
+						</router-link>
+					</p>
+					<small class="link-text">
+						{{ ask.time_ago }} by 
+						<router-link v-bind:to="`/users/${ask.user}`" class="link-text">
+							{{ ask.user }}
+						</router-link>
+					</small>
+				</div>
+			</li>
+		</ul>
 	</div>
 </template>
 
 <script>
 // import { fetchAskList } from '../api/index.js';
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 	// data(){
@@ -44,6 +60,29 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.news-list{
+	margin:0;
+	padding:0
+}
+.post{
+	display:flex;
+	align-items:center;
+	border-bottom:1px solid #eee;
+	list-style: none;
+}
+.points{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width:80px;
+	height:60px;
+	color:#41b883
+}
+.news-title{
+	margin:0;
+}
+.link-text{
+	color:#828282
+}
 </style>

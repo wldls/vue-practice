@@ -24,21 +24,9 @@
 </template>
 
 <script>
-// import { fetchNewsList } from '../api/index.js';
-
 export default {
-	// data(){
-	// 	return{
-	// 		users:[]
-	// 	}
-	// },
 	created(){
 		this.$store.dispatch('FETCH_NEWS');
-		// fetchNewsList()
-		// 	.then(res => this.users = res.data)
-		// 	.catch(err => {
-		// 		console.log(err);
-		// 	});
 	}
 }
 </script>
