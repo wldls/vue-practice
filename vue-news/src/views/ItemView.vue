@@ -2,22 +2,18 @@
 	<div>
 		<!-- 질문 상세 정보 -->
 		<section>
-			<div class="user-container">
-				<div>
-					<i class="fas fa-user"></i>
-				</div>
-				<div class="user-description">
-					<router-link v-bind:to="`/user/${itemList.user}`">
-						{{ itemList.user }}
-					</router-link>
-					<p class="time">
-						{{ itemList.time_ago }}						
-					</p>
-				</div>				
-			</div>
-			<h2>{{ itemList.title }}</h2>
+			<user-profile :info="itemList">
+				<!-- <div slot="username">					
+					{{ itemList.user }}
+				</div> -->
+				<router-link slot="username" :to="`/user/${itemList.user}`">{{ itemList.user }}</router-link>
+				<template slot="time">{{ `Posted: ${itemList.time_ago}` }}</template>
+			</user-profile>
 		</section>
 		<!-- //질문 상세 정보 -->
+		<section>
+			<h2>{{ itemList.title }}</h2>
+		</section>
 		<!-- 질문 댓글 -->
 		<section>
 			<div v-html="itemList.content"></div>
@@ -29,9 +25,13 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile';
 import { mapGetters } from 'vuex';
 
 export default {
+	components:{
+		UserProfile
+	},
 	computed:{
 		...mapGetters(['itemList'])
 	},
