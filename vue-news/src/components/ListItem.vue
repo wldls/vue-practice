@@ -51,18 +51,19 @@ export default {
 	},
 	computed:{
 		listItems(){
-			const name = this.$route.name;
-			let stateName = '';
+			return this.$store.state.list;
+			// const name = this.$route.name;
+			// let stateName = '';
 
-			if(name === 'news'){
-				stateName = this.$store.state.news;
-			}else if(name === "ask"){
-				stateName = this.$store.state.asks;
-			}else if(name === 'jobs'){
-				stateName = this.$store.state.jobs;
-			}
+			// if(name === 'news'){
+			// 	stateName = this.$store.state.news;
+			// }else if(name === "ask"){
+			// 	stateName = this.$store.state.asks;
+			// }else if(name === 'jobs'){
+			// 	stateName = this.$store.state.jobs;
+			// }
 
-			return stateName;
+			// return stateName;
 		}
 	}
 }
