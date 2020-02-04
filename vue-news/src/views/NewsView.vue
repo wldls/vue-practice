@@ -6,12 +6,14 @@
 
 <script>
 import ListItem from '../components/ListItem';
+import DataFetchingMixin from '../mixins/DataFetchingMixin.js'
 // import bus from '../utils/bus';
 
 export default {
 	components:{
 		ListItem
 	},
+	mixins: [DataFetchingMixin]
 	// created(){
 	// 	bus.$emit('start:spinner');
 	// 	setTimeout(() => {
