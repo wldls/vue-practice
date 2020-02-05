@@ -6,6 +6,8 @@ import NewsView from '../views/NewsView.vue';
 import UserView from '../views/UserView.vue';
 import ItemView from '../views/ItemView.vue';
 import createListView from '../views/CreateListView.js';
+import bus from '../utils/bus';
+import { store } from '../store/index';
 
 Vue.use(VueRouter);
 
@@ -22,6 +24,17 @@ export const router = new VueRouter({
 			name:'news',
 			// component: url 주소로 갔을 때 표시될 컴포넌트
 			component: NewsView,
+			beforeEnter: (to, from ,next) => {
+				bus.$emit('start:spinner');
+				store.dispatch('FETCH_LIST', to.name)
+				.then(() => {
+					bus.$emit('end:spinner');
+					next();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+			}
 			// component: createListView('newsView')
 		},
 		{
