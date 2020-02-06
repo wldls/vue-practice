@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header></header>
-    <tool-bar></tool-bar>
+    <tool-bar></tool-bar>    
     <transition name="page">
       <router-view></router-view>
     </transition>
@@ -24,7 +24,7 @@ export default {
       loadingStatus:false
     }
   },
-  methods:{
+  methods:{    
     startSpinner(){
       this.loadingStatus = true;
     },

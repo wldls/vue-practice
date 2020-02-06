@@ -12,9 +12,18 @@ const fetchNewsList = () => (
 )
 
 // ask
-const fetchAskList = () => (
-	axios.get(`${config.baseUrl}/ask/1.json`)
-)
+// const fetchAskList = () => (
+// 	axios.get(`${config.baseUrl}/ask/1.json`)
+// )
+
+async function fetchAskList(){
+	try{
+		const response = await axios.get(`${config.baseUrl}/ask/1.json`);
+		return response;
+	}catch(err){
+		console.log(err);
+	}
+}
 
 // jobs
 const fetchJobsList = () => (
@@ -22,9 +31,18 @@ const fetchJobsList = () => (
 )
 
 // news, ask, jobs
-const fetchList = (pageName) => (
-	axios.get(`${config.baseUrl}/${pageName}/1.json`)
-)
+// const fetchList = (pageName) => (
+// 	axios.get(`${config.baseUrl}/${pageName}/1.json`)
+// )
+
+async function fetchList(pageName){
+	try{
+		const response = await axios.get(`${config.baseUrl}/${pageName}/1.json`);
+		return response;
+	}catch(err){
+		console.log(err);
+	}
+}
 
 // user
 const fetchUserInfo = userName => (
