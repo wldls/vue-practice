@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
 
 export default {
 	mounted(){
 		// var ctx = document.getElementById('lineChart').getContext('2d');
-		const chart = new Chart(this.$refs.lineChart, {
+		const chart = new this.$_Chart(this.$refs.lineChart, {
 				// The type of chart we want to create
 				type: 'line',
 
